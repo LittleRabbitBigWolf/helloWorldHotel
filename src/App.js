@@ -17,8 +17,9 @@ export default class App extends Component {
 
   generateMealPlan(meals) {
     if (
-      this.state.guests.length !== 0 &&
-      this.state.guestDateList.length !== 0
+      this.state.guests.length !== 0
+      // &&
+      // this.state.guestDateList.length !== 0
     ) {
       for (let i = 0; i < this.state.guests.length; i++) {}
     }
@@ -27,9 +28,9 @@ export default class App extends Component {
   invalidBookings = customerErrors => {
     const date_regex = /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/;
     const { guests, guestDateList } = this.state;
-    for (let i = 0; i < guestDateList.length; i++) {
-      while (guests[i] && guestDateList[i].length != date_regex) {}
-    }
+    // for (let i = 0; i < guestDateList.length; i++) {
+    //   while (guests[i] && guestDateList[i].length != date_regex) {}
+    // }
 
     // if (guestDateList !== 0) {
     //   for (let i = 0; i < guestDateList.length; i++) {
@@ -61,18 +62,20 @@ export default class App extends Component {
     let datesArray = dates.split("\n");
     this.setState(
       {
-        guests: guestsArray,
-        guestDateList: datesArray
+        guests: guestsArray
+        // guestDateList: datesArray
       },
       () => {
-        console.log(this.state.guests, this.state.guestDateList);
+        // console.log(this.state.guests, this.state.guestDateList);
       }
     );
   };
 
   render() {
-    const nameToDisplay = this.state.guests.map(el => el);
-    console.log("here....", nameToDisplay);
+    const mealsForGuests = this.state.guests.map(el => {
+      return <Meals names={el} />;
+    });
+    // console.log("here....", nameToDisplay);
     return (
       <div className="container-fluid">
         <center>
@@ -83,8 +86,10 @@ export default class App extends Component {
             handleGuestInfo={this.getGuestInfo}
             invalidBookings={this.invalidBookings}
           />
-          <Error name={nameToDisplay} />
-          <Meals names={nameToDisplay} />
+          <Error
+          // name={nameToDisplay}
+          />
+          {mealsForGuests}
         </div>
       </div>
     );
