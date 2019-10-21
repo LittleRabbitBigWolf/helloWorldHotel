@@ -16,12 +16,12 @@ export default class App extends Component {
   }
 
   generateMealPlan(meals) {
-    if (
-      this.state.guests.length !== 0 &&
-      this.state.guestDateList.length !== 0
-    ) {
-      for (let i = 0; i < this.state.guests.length; i++) {}
-    }
+    // if (
+    //   this.state.guests.length !== 0 &&
+    //   this.state.guestDateList.length !== 0
+    // ) {
+    //   for (let i = 0; i < this.state.guests.length; i++) {}
+    // }
   }
 
   invalidBookings = customerErrors => {
@@ -65,7 +65,7 @@ export default class App extends Component {
         guestDateList: datesArray
       },
       () => {
-        // console.log(this.state.guests, this.state.guestDateList);
+        console.log(this.state.guests, this.state.guestDateList);
       }
     );
   };
@@ -85,9 +85,9 @@ export default class App extends Component {
             handleGuestInfo={this.getGuestInfo}
             invalidBookings={this.invalidBookings}
           />
-          <Error
+          {/* <Error
           // name={nameToDisplay}
-          />
+          /> */}
           {mealsForGuests}
         </div>
       </div>
