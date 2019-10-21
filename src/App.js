@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import Bookings from "./components/Bookings";
-import Meals from "./components/Meals";
-import Error from "./components/Error";
+import React, { Component } from 'react';
+import Bookings from './components/Bookings';
+import Meals from './components/Meals';
+import Error from './components/Error';
 
 export default class App extends Component {
   constructor(props) {
@@ -17,9 +17,8 @@ export default class App extends Component {
 
   generateMealPlan(meals) {
     if (
-      this.state.guests.length !== 0
-      // &&
-      // this.state.guestDateList.length !== 0
+      this.state.guests.length !== 0 &&
+      this.state.guestDateList.length !== 0
     ) {
       for (let i = 0; i < this.state.guests.length; i++) {}
     }
@@ -57,13 +56,13 @@ export default class App extends Component {
   };
 
   getGuestInfo = (guests, dates) => {
-    console.log("app: ", guests, dates);
-    let guestsArray = guests.split("\n");
-    let datesArray = dates.split("\n");
+    // console.log("app: ", guests, dates);
+    let guestsArray = guests.split('\n');
+    let datesArray = dates.split('\n');
     this.setState(
       {
-        guests: guestsArray
-        // guestDateList: datesArray
+        guests: guestsArray,
+        guestDateList: datesArray
       },
       () => {
         // console.log(this.state.guests, this.state.guestDateList);

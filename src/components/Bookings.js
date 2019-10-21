@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import { PropTypes } from "prop-types";
+import React, { Component } from 'react';
+import { PropTypes } from 'prop-types';
 
 export default class Bookings extends Component {
   state = {
-    guests: "",
-    dates: ""
+    guests: '',
+    dates: ''
   };
   getGuestInfo = e => {
     this.setState(
@@ -40,7 +40,7 @@ export default class Bookings extends Component {
             placeholder="Enter the date range for each guests stay (one range per line)"
             onChange={e => {
               this.getGuestInfo(e);
-              this.props.invalidBookings();
+              // this.props.invalidBookings();
             }}
           />
         </div>
