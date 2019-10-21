@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import Bookings from './components/Bookings';
-import Meals from './components/Meals';
-import Error from './components/Error';
+import React, { Component } from "react";
+import Bookings from "./components/Bookings";
+import Meals from "./components/Meals";
+import Error from "./components/Error";
 
 export default class App extends Component {
   constructor(props) {
@@ -56,9 +56,8 @@ export default class App extends Component {
   };
 
   getGuestInfo = (guestNameList, dates) => {
-    // console.log("app: ", guestNameList, dates);
-    let guestsArray = guestNameList.split('\n');
-    let datesArray = dates.split('\n');
+    let guestsArray = guestNameList.split("\n");
+    let datesArray = dates.split("\n");
     this.setState(
       {
         guestNameList: guestsArray,
@@ -74,7 +73,6 @@ export default class App extends Component {
     const mealsForGuests = this.state.guestNameList.map((el, id) => {
       return <Meals key={id} name={el} dates={this.state.guestDateList[id]} />;
     });
-    // console.log("here....", nameToDisplay);
     return (
       <div className="container-fluid">
         <center>
