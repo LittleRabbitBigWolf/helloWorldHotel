@@ -12,7 +12,7 @@ export default class Bookings extends Component {
         [e.target.name]: e.target.value
       },
       () => {
-        console.log(this.state);
+        // console.log(this.state);
         this.props.handleGuestInfo(this.state.guests, this.state.dates);
       }
     );
@@ -43,6 +43,7 @@ export default class Bookings extends Component {
               // this.props.invalidBookings();
             }}
           />
+          <p>Example: 2019-12-12 to 2019-12-15</p>
         </div>
       </div>
     );
