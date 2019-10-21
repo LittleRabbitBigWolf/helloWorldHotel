@@ -64,14 +64,16 @@ export default class App extends Component {
         guestDateList: datesArray
       },
       () => {
-        console.log(this.state.guestNameList, this.state.guestDateList);
+        // console.log(this.state.guestNameList, this.state.guestDateList);
       }
     );
   };
 
   render() {
     const mealsForGuests = this.state.guestNameList.map((el, id) => {
-      return <Meals key={id} name={el} dates={this.state.guestDateList[id]} />;
+      return (
+        <Meals key={id} name={el} dateString={this.state.guestDateList[id]} />
+      );
     });
     return (
       <div className="container-fluid">
