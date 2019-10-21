@@ -9,7 +9,7 @@ export default class App extends Component {
     this.state = {
       guestMealPlan: [],
       invalidBookings: [],
-      guests: [], //added
+      guestNameList: [], //added
       guestDateList: [], //added
       dateToRender: [] //added
     };
@@ -17,18 +17,18 @@ export default class App extends Component {
 
   generateMealPlan(meals) {
     // if (
-    //   this.state.guests.length !== 0 &&
+    //   this.state.guestNameList.length !== 0 &&
     //   this.state.guestDateList.length !== 0
     // ) {
-    //   for (let i = 0; i < this.state.guests.length; i++) {}
+    //   for (let i = 0; i < this.state.guestNameList.length; i++) {}
     // }
   }
 
   invalidBookings = customerErrors => {
     const date_regex = /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/;
-    const { guests, guestDateList } = this.state;
+    const { guestNameList, guestDateList } = this.state;
     // for (let i = 0; i < guestDateList.length; i++) {
-    //   while (guests[i] && guestDateList[i].length != date_regex) {}
+    //   while (guestNameList[i] && guestDateList[i].length != date_regex) {}
     // }
 
     // if (guestDateList !== 0) {
@@ -55,24 +55,24 @@ export default class App extends Component {
     // }
   };
 
-  getGuestInfo = (guests, dates) => {
-    // console.log("app: ", guests, dates);
-    let guestsArray = guests.split('\n');
+  getGuestInfo = (guestNameList, dates) => {
+    // console.log("app: ", guestNameList, dates);
+    let guestsArray = guestNameList.split('\n');
     let datesArray = dates.split('\n');
     this.setState(
       {
-        guests: guestsArray,
+        guestNameList: guestsArray,
         guestDateList: datesArray
       },
       () => {
-        console.log(this.state.guests, this.state.guestDateList);
+        console.log(this.state.guestNameList, this.state.guestDateList);
       }
     );
   };
 
   render() {
-    const mealsForGuests = this.state.guests.map(el => {
-      return <Meals names={el} />;
+    const mealsForGuests = this.state.guestNameList.map((el, id) => {
+      return <Meals key={id} name={el} dates={this.state.guestDateList[id]} />;
     });
     // console.log("here....", nameToDisplay);
     return (
